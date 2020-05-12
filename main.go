@@ -8,7 +8,16 @@ import (
 
 var (
 	extension = []string{}
+	path      string
 )
+
+func checkArgs() {
+	if len(os.Args[:]) < 2 {
+		fmt.Println("Please Type name od folder you wanna filter!")
+		os.Exit(0)
+	}
+	path = os.Args[1]
+}
 
 func readCurrentDir(path string) {
 	file, err := os.Open(path)
@@ -50,30 +59,6 @@ func readCurrentDir(path string) {
 }
 
 func main() {
-	//slc := []string{"a", "a", "b", "c", "d", "b", "a", "b", "c", "c", "c", "c", "b"}
-	//u := uniqitem(slc)
-	//fmt.Println(u)
-	path := os.Args[1]
+	checkArgs()
 	readCurrentDir(path)
-}
-
-// uniqitem filters multy items to uniq item
-func uniqitem(slc []string) []string {
-	var isUniq bool
-	var uslc []string
-	for k, v := range slc {
-		isUniq = true
-		for i := k + 1; i < len(slc); i++ {
-
-			if v == slc[i] {
-				isUniq = false
-				continue
-			}
-		}
-		if isUniq == true {
-			uslc = append(uslc, v)
-		}
-
-	}
-	return uslc
 }
