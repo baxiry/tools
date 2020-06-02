@@ -28,8 +28,8 @@ func readCurrentDir(path string) {
 
 	fileList, _ := file.Readdirnames(0)
 
-	for i, name := range fileList {
-		fmt.Println(i, "  ", name)
+	for _, name := range fileList {
+		//fmt.Println(i, "  ", name)
 		isdir, err := os.Stat(path + "/" + name)
 		if err != nil {
 			fmt.Println(err)
@@ -46,12 +46,11 @@ func readCurrentDir(path string) {
 
 			err = os.MkdirAll(path+"/"+extension[l], 0777)
 			if err != nil {
-				fmt.Println("OKKKKKKKKKKKKK")
 				panic(err)
 			}
 			err = os.Rename(path+"/"+name, path+"/"+newDir+"/"+name)
 			if err != nil {
-				fmt.Println("permession ????")
+				//fmt.Println("permession ????")
 				panic(err)
 			}
 		}
