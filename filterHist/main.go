@@ -26,12 +26,14 @@ func main() {
 	cmds := strings.Split(mydata, "\n")
 
 	for _, cmd := range cmds {
-		if len(cmd) < 2 {
+		// some cmd not importent/ like cd ls mv rm ..
+		if len(cmd) < 4 {
 			continue
 		}
-		if cmd[:2] != "cd" && cmd[:2] != "ls" {
-			list = append(list, cmd)
+		if cmd[:3] == "git" || cmd[:2] == "rm" || cmd[:2] == "mv" {
+			continue
 		}
+		list = append(list, cmd)
 	}
 
 	res := filter(list)
@@ -50,7 +52,7 @@ func main() {
 		fmt.Errorf("could not write to cmds file %s", err)
 	}
 
-	fmt.Println(fdata)
+	fmt.Println(len(res))
 
 }
 
