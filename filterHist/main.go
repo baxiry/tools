@@ -30,7 +30,7 @@ func main() {
 		if len(cmd) < 4 {
 			continue
 		}
-		if cmd[:3] == "git" || cmd[:2] == "rm" || cmd[:2] == "mv" {
+		if cmd[:3] == "git" || cmd[:2] == "rm" || cmd[:2] == "mv" || cmd[:2] == "cd" {
 			continue
 		}
 		list = append(list, cmd)
