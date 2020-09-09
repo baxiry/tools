@@ -52,7 +52,7 @@ func main() {
 		fmt.Errorf("could not write to cmds file %s", err)
 	}
 
-	//fmt.Println(len(res))
+	//fmt.Println("don")
 
 }
 
