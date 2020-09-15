@@ -13,7 +13,7 @@ var (
 
 func checkArgs() {
 	if len(os.Args[:]) < 2 {
-		fmt.Println("Please Type name od folder you wanna filter!")
+		fmt.Println("Please Type name of directory  you wanna filter!")
 		os.Exit(0)
 	}
 	path = os.Args[1]
