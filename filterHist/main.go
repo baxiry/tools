@@ -13,7 +13,7 @@ func main() {
 	user := os.Getenv("USER")
 	file, err := os.Open("/home/" + user + "/.bash_history") //
 	if err != nil {
-		fmt.Errorf("we have an error: %s", err)
+		fmt.Printf("we have an error: %s", err)
 	}
 	defer file.Close()
 
@@ -44,12 +44,12 @@ func main() {
 	}
 	_, err = file.WriteAt([]byte(fdata), int64(lenData)) // Write at last file
 	if err != nil {
-		fmt.Errorf("failed writing to file: %s", err)
+		fmt.Printf("failed writing to file: %s", err)
 	}
 	//fmt.Println(fdata)
 	err = ioutil.WriteFile("/home/"+user+"/.bash_history", []byte(fdata), 0644)
 	if err != nil {
-		fmt.Errorf("could not write to cmds file %s", err)
+		fmt.Printf("could not write to cmds file %v", err)
 	}
 
 	//fmt.Println("don")
