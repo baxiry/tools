@@ -11,7 +11,8 @@ func main() {
 	list := []string{}
 
 	user := os.Getenv("USER")
-	file, err := os.Open("/home/" + user + "/.bash_history") //
+	file, err := os.OpenFile("/home/"+user+"/.bash_history", os.O_RDWR, os.ModeAppend)
+	//file, err := os.Open("/home/" + user + "/.bash_history") //
 	if err != nil {
 		fmt.Printf("we have an error: %s", err)
 	}
