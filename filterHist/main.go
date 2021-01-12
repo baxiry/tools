@@ -43,10 +43,10 @@ func main() {
 		fdata += cmd
 		fdata += "\n"
 	}
-	_, err = file.WriteAt([]byte(fdata), int64(lenData)) // Write at last file
-	if err != nil {
-		fmt.Printf("failed writing to file: %s", err)
-	}
+	//	_, err = file.WriteAt([]byte(fdata), int64(lenData)) // Write at last file
+	//	if err != nil {
+	//		fmt.Printf("failed writing to file: %s", err)
+	//	}
 	//fmt.Println(fdata)
 	err = ioutil.WriteFile("/home/"+user+"/.bash_history", []byte(fdata), 0644)
 	if err != nil {
