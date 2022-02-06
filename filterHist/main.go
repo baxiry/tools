@@ -10,8 +10,9 @@ import (
 func main() {
 	list := []string{}
 
-	user := os.Getenv("USER")
-	file, err := os.OpenFile("/home/"+user+"/.bash_history", os.O_RDWR, os.ModeAppend)
+	//user := os.Getenv("USER")
+	filePath := "/Users/fedora/.zsh_history"
+	file, err := os.OpenFile(filePath, os.O_RDWR, os.ModeAppend)
 	//file, err := os.Open("/home/" + user + "/.bash_history") //
 	if err != nil {
 		fmt.Printf("we have an error: %s", err)
@@ -31,7 +32,7 @@ func main() {
 		if len(cmd) < 4 {
 			continue
 		}
-		if cmd[:3] == "git" || cmd[:2] == "rm" || cmd[:2] == "mv" || cmd[:2] == "cd" {
+		if cmd[:3] == " ls" || cmd[:2] == "ls" || cmd[:3] == "git" || cmd[:2] == "rm" || cmd[:2] == "mv" || cmd[:2] == "cd" || cmd[:4] == "nvim" || cmd[:3] == "cat" {
 			continue
 		}
 		list = append(list, cmd)
@@ -48,12 +49,12 @@ func main() {
 	//		fmt.Printf("failed writing to file: %s", err)
 	//	}
 	//fmt.Println(fdata)
-	err = ioutil.WriteFile("/home/"+user+"/.bash_history", []byte(fdata), 0644)
+	err = ioutil.WriteFile(filePath, []byte(fdata), 0644)
 	if err != nil {
 		fmt.Printf("could not write to cmds file %v", err)
 	}
 
-	//fmt.Println("don")
+	fmt.Println("cleaning bash_history.. Done")
 
 }
 
